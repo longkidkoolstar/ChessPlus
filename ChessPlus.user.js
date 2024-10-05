@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chess Plus+
 // @namespace    https://github.com/longkidkoolstar
-// @version      1.1.2
+// @version      2.0
 // @description  Add Essential/Quality of life tweaks to Chess.com
 // @author       longkidkoolstar
 // @license      BSD-3-Clause
@@ -12,8 +12,8 @@
 // @match        https://www.chess.com/*
 // @grant        GM_getValue
 // @grant        GM_setValue
-// @downloadURL https://update.greasyfork.org/scripts/471296/Chess%20Plus%2B.user.js
-// @updateURL https://update.greasyfork.org/scripts/471296/Chess%20Plus%2B.meta.js
+// @downloadURL  https://update.greasyfork.org/scripts/471296/Chess%20Plus%2B.user.js
+// @updateURL    https://update.greasyfork.org/scripts/471296/Chess%20Plus%2B.meta.js
 // ==/UserScript==
 
 
