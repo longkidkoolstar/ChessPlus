@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chess Plus+
 // @namespace    https://github.com/longkidkoolstar
-// @version      2.0
+// @version      2.0.1
 // @description  Add Essential/Quality of life tweaks to Chess.com
 // @author       longkidkoolstar
 // @license      BSD-3-Clause
