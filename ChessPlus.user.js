@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chess Plus+
 // @namespace    https://github.com/longkidkoolstar
-// @version      2.0.1
+// @version      2.0.2
 // @description  Add Essential/Quality of life tweaks to Chess.com
 // @author       longkidkoolstar
 // @license      BSD-3-Clause
@@ -26,24 +26,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
-
-
-
-//Maybe Future stuff
-
-// Function for Lichess game analysis
-//function request_analysis() {
-  //var button = $("button.text span[data-icon='']");
- // if (button) {
-//    button.click();
-//  }
-//}
-
-// Call request_analysis() only on Lichess game pages
-//if (window.location.href.match('https://lichess.org/*')) {
-//  request_analysis();
-//}
 
 
 (function () {
@@ -359,20 +341,23 @@ async function importGame() {
     });
 }
 
-// Async post function
 async function requestLichessURL(pgn, callback) {
-    let url = "https://lichess.org/api/import";
-    chrome.runtime.sendMessage(
-        {
-            data: { pgn: pgn },
-            url: url
-        }, function (response) {
-            if (response) {
-                callback(response);
-            } else {
-                callback(null);
-            }
-        });
+  let proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // or any other proxy server
+  let url = proxyUrl + 'https://lichess.org/api/import';
+  let response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ pgn: pgn })
+  });
+
+  if (response.ok) {
+    let data = await response.json();
+    callback(data);
+  } else {
+    callback(null);
+  }
 }
 
 function findElementByClassName(className, maxAttempts = Infinity, interval = 100, minDuration = 4000) {
