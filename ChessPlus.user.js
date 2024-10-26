@@ -342,8 +342,7 @@ async function importGame() {
 }
 
 async function requestLichessURL(pgn, callback) {
-  let proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // or any other proxy server
-  let url = proxyUrl + 'https://lichess.org/api/import';
+  let url = 'https://lichess.org/api/import';
   let response = await fetch(url, {
     method: "POST",
     headers: {
@@ -359,6 +358,7 @@ async function requestLichessURL(pgn, callback) {
     callback(null);
   }
 }
+
 
 function findElementByClassName(className, maxAttempts = Infinity, interval = 100, minDuration = 4000) {
     return new Promise((resolve, reject) => {
